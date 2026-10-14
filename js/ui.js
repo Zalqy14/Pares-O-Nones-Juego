@@ -19,6 +19,11 @@ document.getElementById("sueldo").textContent += state.sueldo;
 // ALL IN BABY
 document.getElementById("allIn").addEventListener("click", (e) => {
   e.preventDefault();
+  const numeroRevisar = state.sueldo;
+  if (!validarNumero(numeroRevisar)) {
+    alert("No puedes Jugar Sin Balance");
+    return;
+  }
   state.apuesta = state.sueldo;
   apuestasUi();
 });
@@ -34,7 +39,7 @@ document.getElementById("apostar").addEventListener("click", (e) => {
     apuestasUi();
   } else {
     state.apuesta = 0;
-    alert("Jugando Sin Balance");
+    alert("Error Al apostar");
   }
 });
 

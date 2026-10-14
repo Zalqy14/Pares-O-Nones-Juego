@@ -78,18 +78,14 @@ export function mostrarElegirNumero() {
   document.getElementById("elegirNumero").style.display = "block";
 }
 
-// Este validador lo utlizamos para que los número que se introduzcan no puedan ser negativos
+// Este validador lo utlizamos para que los número que se introduzcan no puedan ser negativos y que sea entero
 export function validarNumero(numero) {
-  if (numero > 0) {
-    return true;
-  } else {
-    return false;
-  }
+  return numero > 0 && EsEntero(numero);
 }
 
 export function darBalance() {
   const balanceSumar = Number(document.getElementById("inputBalance").value);
-  if (Number.isFinite(balanceSumar) && balanceSumar > 0) {
+  if (validarNumero(balanceSumar)) {
     localStorage.setItem("sueldo", balanceSumar + state.sueldo);
     location.reload();
   } else {
@@ -98,7 +94,7 @@ export function darBalance() {
 }
 
 export function apuestasUi() {
-  document.getElementById("sueldo").textContent = "Balance:" + state.sueldo;
+  document.getElementById("sueldo").textContent = "Balance: " + state.sueldo;
   document.getElementById("contenedorApuesta").style.display = "none";
   document.getElementById("contenedorApostado").style.display = "block";
   document.getElementById("h2contenedorApostado").textContent =
